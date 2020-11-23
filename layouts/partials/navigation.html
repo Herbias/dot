@@ -4,14 +4,15 @@
       {{ $logo:= site.Params.logo }}
       {{ $logoWhite:= site.Params.logo_white }}
       {{ if (or $logo $logoWhite) }}
-      {{ if .IsHome }}
-      <img class="img-fluid" src="{{if $logoWhite }}{{ $logoWhite | absURL }} {{ else }} {{ $logo | absURL }}{{ end }}"
-        alt="{{ site.Title }}">
+        {{ if .IsHome }}
+        <img class="img-fluid" src="{{if $logoWhite }}{{ $logoWhite | absURL }} {{ else }} {{ $logo | absURL }}{{ end }}"
+          alt="{{ site.Title }}">
+          {{ site.Title }}
+        {{ else }}
+        <img class="img-fluid" src="{{ $logo | absURL }}" alt="{{ site.Title }}">
+        {{ end }}
       {{ else }}
-      <img class="img-fluid" src="{{ $logo | absURL }}" alt="{{ site.Title }}">
-      {{ end }}
-      {{ else }}
-      {{ site.Title }}
+        {{ site.Title }}
       {{ end }}
     </a>
     <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navigation"
